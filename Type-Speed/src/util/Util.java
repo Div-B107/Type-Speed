@@ -2,15 +2,36 @@ package util;
 
 import global.GlobalStrings;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Scanner;
 
 public class Util {
+
+    public static void writeWordsToArray(){
+        try(BufferedReader bufferedReader  = new BufferedReader(new FileReader(GlobalStrings.FILE_NAME ))){
+            String word =  null;
+            while((word=bufferedReader.readLine())!=null){
+                GlobalStrings.stringDynamicArray.add(word);
+
+            }
+
+
+        }catch (IOException ex){
+            ex.printStackTrace();
+
+        }
+
+
+
+
+    }
 
 
     public static void writeWordsToFile() {
@@ -20,10 +41,11 @@ public class Util {
 
             URL url = new URL(urlPath);
 
-            for (int i = 0; i < 20; i++) {
+            for (int i = 0; i < 5; i++) {
 
                 Scanner scanner = new Scanner(url.openStream());
                 String randomWord = scanner.useDelimiter("\\A").nextLine();
+                System.out.println(randomWord);
                 String newWord = randomWord.replace("[\"", "").replace("\"]", "");
                 writeFile(newWord);
             }

@@ -1,6 +1,10 @@
 package global;
 
+import dynamicArrays.StringDynamicArray;
+
 public class GlobalStrings {
+
+    public static StringDynamicArray stringDynamicArray =  new StringDynamicArray();
 
 
     public static final String FILE_NAME = "random-words.txt";
